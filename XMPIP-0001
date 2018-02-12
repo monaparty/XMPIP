@@ -1,0 +1,79 @@
+---
+XMPIP: 1
+Layer: Applications
+Title: Distributed storage bound to Monaparty token
+Author: Cryptcoin Junkey <cryptcoin.junkey@gmail.com>
+Status: RFC
+Type: Standards Track
+Created: 2018-02-12
+---
+
+# Abstract
+
+P2P 型の分散ストレージシステム IOFS と Monaparty トークンを用いて、
+ファイルの公開者がトークンの所有者であることをトラストレスに証明しつつファイルの公開を行うシステムを提案する。
+
+# Motivation
+
+コンテンツの公開者が自分であることを証明する永続的で簡便な手段が求められている。
+
+例えば Monacard は、トークンと画像を紐付けることでカード交換と模した機能を提供している。
+Monacard では、事前に SNS 認証と Monacoin 秘密鍵を用いた署名とを組みあせて、コンテンツ公開者とトークン所有者との紐付けを行っていると思われる。
+この場合、 Monacard の内部データベースが失われた場合には、コンテンツとトークンの紐付けも失われてしまう。
+
+# 動作レイヤ
+
+本提案の動作レイヤは、Monacoin を Layer1、Monaparty を Layer2 としたとき、Layer3 に属する。
+Monaparty を API として動作するアプリケーションとして実現されるものである。
+
+# 実現されるもの
+
+IPFS に記録されたコンテンツの公開者が、
+特定の Monaparty トークンの所有者であることを、
+Monaparty のブロックチェーンが稼働している限り、
+簡便に確認できるシステム。
+
+# 実現されないもの
+
+上記「実現されるもの」に無いものは実現されない。特に、下記の期待には応えられない。
+
+* 暗号化された秘匿性のあるストレージ
+* コンテンツの公開者がコンテンツに関する知的財産権を有していることの確認
+* 厳密な意味での「忘れられる権利」の保証
+
+# アクターモデル
+
+本提案には、下記のアクターが登場する。
+
+* Owner (コンテンツ公開者)
+* Register (コンテンツ登録者)
+* Scanner (ブロックチェーン監視者)
+* Audience (コンテンツ閲覧者)
+
+また、下記の広義のデータベースが登場する
+
+* IPFS
+* Monacoin blockchain
+* Volatile DB
+
+# Operations by Owner
+
+## Publish
+
+Owner は publish (公開) に際し下記の手順を踏む。
+
+0. 公開コンテンツに対する metadata を作成する。
+0. matadata と公開コンテンツを IOFS に追加する。
+0. 公開コンテンツと紐付けたい Monaparty トークンを、Monacoin アドレス `MonaStorageVer1xxxxxxxxxxxxxxSidGT` に、IPFS から得られるハッシュ (`Qm` で始まる32バイト文字列) を text message に含め、Monacoin ネットワークにブロードキャストする。
+
+送信先の Monacoin アドレスは、秘密鍵が不明であり、送信されたトークンはどこにも再送できない。
+
+## Update
+
+Publish したコンテンツの update (更新) は、publish と同じ手順を踏む。
+
+## Delete
+
+Owner が publish したコンテンツを delete (取り下げ) したい場合には、下記の手順を踏む。
+
+0. 公開コンテンツとの紐付けを解きたい Monaparty トークンを、Monacoin アドレス `MonaStorageVer1xxxxxxxxxxxxxxSidGT` に、`delete` というASCII文字列を text message に含め、Monacoin ネットワークにブロードキャストする。
