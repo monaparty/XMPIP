@@ -48,6 +48,7 @@ Monaparty のブロックチェーンが稼働している限り、
 * Owner (コンテンツ公開者)
 * Register (コンテンツ登録者)
 * Scanner (ブロックチェーン監視者)
+* Libraty Reference (問い合わせ応答者)
 * Audience (コンテンツ閲覧者)
 
 また、下記の広義のデータベースが登場する
@@ -77,3 +78,30 @@ Publish したコンテンツの update (更新) は、publish と同じ手順�
 Owner が publish したコンテンツを delete (取り下げ) したい場合には、下記の手順を踏む。
 
 0. 公開コンテンツとの紐付けを解きたい Monaparty トークンを、Monacoin アドレス `MonaStorageVer1xxxxxxxxxxxxxxSidGT` に、`delete` というASCII文字列を text message に含め、Monacoin ネットワークにブロードキャストする。
+
+# Register
+
+実運用時には Owner は、技術的なスキルレベルが必ずしも高くないユーザとなることが想定される。
+Owner の作業の一部を Register が代行する。Register は、専用のアプリケーションもしくは、ウォレットの拡張機能として実現される。
+
+# Scanner
+
+Scanner は、Monacoin アドレス `MonaStorageVer1xxxxxxxxxxxxxxSidGT` を常時監視し、受信したトークンに添付されたメッセージにより volatile DB の内容を変更する。
+
+* トークンの送信者が同トークンの所有者だった場合、かつメッセージに含まれる文字列が IPFS のハッシュ形式で、そのハッシュを用いて解析可能な `metadata.json`を取得可能なとき、下記の処理を行う。
+ * トークン名とハッシュの紐付けを volatile DB に記録する。
+ * メタデータの内容に必要に応じ変更を加え volatile DB に記録する。
+* トークン名の送信者が同トークンの所有者で、かつメッセージに含まれる文字列が `delete` だったとき、下記の処理を行う。
+ * アドレスとハッシュの紐付けを削除する。
+ * メタデータの記録を削除する。
+
+Scanner は、Monacoin チェーンの 1 版から順に読み volatile DB の更新を行う。
+そのため、Owner や Register が同じトークンに対して送信した場合には、あとから出した送信により上書きされる。
+
+Scanner が volatile DB を更新した後に、Owner が他の人にトークンの所有権を transfer した場合、Scanner はトークンの所有権が引き続き Owner にあるものと見做す。
+アドレスとハッシュの所有権を変更するには、新しいトークン所有権者が、Owner となって(または Register を介して) update 更新作業を行う必要がある。
+
+# Library Reference
+
+Library Reference (以下 Reference と略記)は、Audience からの「特定トークンに紐付いた、ハッシュおよびメタデータの内容」に関する問い合わせに対し応答する。
+
