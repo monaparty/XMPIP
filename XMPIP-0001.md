@@ -65,7 +65,7 @@ Monaparty のブロックチェーンが稼働している限り、
 Owner は publish (公開) に際し下記の手順を踏む。
 
 0. 公開コンテンツに対する metadata を作成する。
-0. matadata と公開コンテンツを IOFS に追加する。
+0. matadata と公開コンテンツを IPFS に追加する。
 0. 公開コンテンツと紐付けたい Monaparty トークンを、下記条件でMonacoin ネットワークにブロードキャストする。
  * 送信先 Monacoin アドレスは `MonaStorageVer1xxxxxxxxxxxxxxSidGT` とする。
  * text message として IPFS から得られるハッシュ (`Qm` で始まる32バイト文字列) のみを含める。
