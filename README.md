@@ -17,3 +17,4 @@ Number|title|Author|status
 0012|Bets as the ascrow|Cryptcoin Junkey|Draft (no docs)
 0013|IPFS support|Cryptcoin Junkey|Draft (no docs)
 0014|Extended Asset Info v2.0|Cryptcoin Junkey|Draft (no docs)
+0015|Trigger Message|Crypctoin Junkey|Draft (no docs)
