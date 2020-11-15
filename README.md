@@ -17,4 +17,4 @@ Number               |title|Author|status
 0012                 |~~Bets as the escrow~~|Cryptcoin Junkey|Rejected
 0013                 |IPFS support|Cryptcoin Junkey|Draft (no docs)
 0014                 |Extended Asset Info v2.0|Cryptcoin Junkey|Draft (no docs)
-[0015](XMPIP-0015.md)|Add "trigger" message|Cryptoin Junkey|Draft (no docs)
+[0015](XMPIP-0015.md)|Add "trigger" message|Cryptcoin Junkey|Draft (no docs)
