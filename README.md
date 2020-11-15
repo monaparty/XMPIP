@@ -4,7 +4,7 @@ Monaparty Improvement Proposals
 Number               |title|Author|status
 ---------------------|-----|------|------
 0001                 |Overview|Cryptcoin Junkey|T.B.D
-0002                 |Monaparty Payment URI Scheme|Cryptcoin Junkey|Accepted
+[0002](XMPIP-0002.md)|Monaparty Payment URI Scheme|Cryptcoin Junkey|Accepted
 0003                 |Asset type flags|Cryptcoin Junkey | Implemanted (no docs)
 0004                 |Assets with the non-reassignable flag|Cryptcoin Junkey| Implemented (no docs)
 0005                 |Assets with the delisted flag|Cryptcoin Junkey|Implemented (no docs)
