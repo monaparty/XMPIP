@@ -35,10 +35,9 @@ The requirement can be resolved by providing the new message that have the targe
 
 ## Technical implementation ##
 
-A new message type under the CIP11 numbering should be allocated for address
-sweep messages.
+A new message type under the CIP11 numbering should be allocated for trigger messages.
 
-The address sweep must specify the following fields:
+The trigger message must specify the following fields:
 
   * New Message ID: ````0x78````
   * tx_hash (32bytes)
