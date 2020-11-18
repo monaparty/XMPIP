@@ -20,3 +20,4 @@ Number               |title|Author|status
 [0015](XMPIP-0015.md)|Add "trigger" message|Cryptcoin Junkey|Draft
 0016                 |Escrow contract|Cryptcoin Junkey|Planned
 0017                 |Auction contract|Cryptcoin Junkey|Planned
+0018                 |Monacard compatible image storage|Cryptcoin Junkey|Planned
