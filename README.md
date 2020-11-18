@@ -10,7 +10,7 @@ Number               |title|Author|status
 0005                 |Assets with the delisted flag|Cryptcoin Junkey|Implemented (no docs)
 0006                 |Assets with the non-vendable flag|Cryptcoin Junkey|Partly implemented (no docs)
 0007                 |Enabling functions implemented by Counterparty (2020.10)|Cryptcoin Junkey|Implemented (no docs)
-0008                 |Addresses that can reject send messages|Cryptcoin Junkey|reserved
+[0008](XMPIP-0008.md)|Addresses that reject receiving assets with typical flags|Cryptcoin Junkey|Draft
 0009                 |Fee update (2020.12)|Cryptcoin Junkey|Draft (no docs)
 0010                 |Monaparty Automation|Cryptcoin Junkey|Draft (no docs)
 0011                 |Assets Ownership Market|Cryptcoin Junkey|Draft (no docs)
