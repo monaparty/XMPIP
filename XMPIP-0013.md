@@ -3,7 +3,7 @@
   Title: IPFS support
   Authors: Cryptcoin Junkey
   Discussions-To: 
-  Status: Draft
+  Status: Implemented
   Type: Standards
   Created: 2020-11-16
 </pre>
