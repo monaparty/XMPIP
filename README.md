@@ -21,3 +21,4 @@ Number               |title|Author|status
 0016                 |Escrow contract|Cryptcoin Junkey|Planned
 0017                 |Auction contract|Cryptcoin Junkey|Planned
 0018                 |Monacard compatible image storage|Cryptcoin Junkey|Planned
+[0019](XMPIP-0019.md)|Asset Metadata Object|Planned
