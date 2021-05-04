@@ -48,11 +48,11 @@ A new message type under the CIP11 numbering should be allocated for trigger mes
 The trigger message must specify the following fields:
 
   * New Message ID: ````0x78````
-  * tx_hash (32bytes)
-  * Data field (Rest of the remaining message)
+  * target_hash (32bytes)
+  * Payload field (Rest of the remaining message)
 
 The trigger message itself requrires 0.001 XMP as the trigger fee. It means also anti spam fee.
-This fee isn't back even if the message is invalidate in the triggered contract identified `tx_hash`. 
+This fee isn't back even if the message is invalidate in the triggered contract identified `target_hash`. 
 The validator will invalidate the message if the source address have less XMP than the relay fee.
 
 In addition, contracts triggered by this message may require more anti spam fee from the source address.
@@ -69,8 +69,8 @@ Similar to `cancel`, the validation process of the trigger depends on the valida
 
  * **source** (string): The address triggering contract that identified by `tx_hash`.
  * **target_hash** (string): transaction hash that is expected to affect. ASCII string that can interpret a hexadecimal value.
- * **data** (string): data
- * **data_is_hex** (boolean): If this is true, interpret the data as a hexadecimal value. Defaults to false.
+ * **payload** (string): data that is transferred to the trigger receiver
+ * **payload_is_hex** (boolean): If this is true, interpret the payload as a hexadecimal value. Defaults to false.
 
 ### get_triggers
 
@@ -81,24 +81,22 @@ gets the triggers from the database, in the same manner as other get_* ops.
 `triggers` table is added.
 
 ```
-CREATE TABLE triggers (
-    tx_index INTEGER PRIMARY KEY,
-    tx_hash TEXT UNIQUE,
-    block_index INTEGER,
-    source TEXT,
-    target_hash TEXT,
-    data BLOB,
-    status TEXT,
-) FOREIGN KEY (tx_index, tx_hash, block_index) REFERENCES transactions(tx_index, tx_hash, block_index))
-
+CREATE TABLE IF NOT EXISTS triggers(
+  tx_index INTEGER PRIMARY KEY,
+  tx_hash TEXT UNIQUE,
+  block_index INTEGER,
+  source TEXT,
+  target_hash TEXT,
+  payload BLOB,
+  status TEXT,
+  FOREIGN KEY (tx_index, tx_hash, block_index) REFERENCES transactions(tx_index, tx_hash, block_index))
 ```
 
 It is added some indexes.
 
 ```
 CREATE INDEX IF NOT EXISTS block_index_idx ON broadcasts (block_index)
-CREATE INDEX IF NOT EXISTS status_source_idx ON broadcasts (status, source)
-CREATE INDEX IF NOT EXISTS status_source_index_idx ON broadcasts (status, source, tx_index)
+CREATE INDEX IF NOT EXISTS source_index_idx ON broadcasts (status, source, tx_index)
 ```
 
 # Compatibility
