@@ -23,3 +23,4 @@ Number               |title|Author|status
 0018                 |Monacard compatible image storage|Cryptcoin Junkey|Planned
 [0019](XMPIP-0019.md)|Asset Metadata Object|Planned
 0020                 |Non fungible asset|Draft (no docs)
+[0021](XMPIP-0021.md)|API refinement|Planned
