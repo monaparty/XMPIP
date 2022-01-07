@@ -28,7 +28,7 @@ The purpose of this refinement is to provide the better API that exposes tables 
 * The current `get_messages` is renamed to `get_messages_by_block_index`.
 * The new `get_messages` accepts `get_{table}` style arguments and returns `get_{table}` style values.
 * `get_mempool` ignores two arguments `start_block` and `end_block`.
-* `get_addresses`, `get_blocks` and `get_transactions` is added with the `get_{table}` style.
+* `get_addresses`, `get_blocks` and `get_transactions` are added with the `get_{table}` style.
 
 ## Rationale ##
 
