@@ -1,6 +1,6 @@
 <pre>
   XMPIP: 0022
-  Title: BLOB store
+  Title: binary store
   Authors: Cryptcoin Junkey
   Discussions-To: 
   Status: Draft
@@ -10,15 +10,15 @@
 
 ## Abstract ##
 
-This article defines the new message 'blobstore'.
+This article defines the new message 'binstore'.
 
 
 ## Motivation ##
 
 An upcoming feature "Monaparty Automation" requires a storage for message templates and scripts.
-A simple BLOB is enough for such requirements.
+A simple binary storage is enough for such requirements.
 
-In addition , the pure BLOB storage provides some more values to Monacoin chain as a store of value (SoV).
+In addition , the pure binary storage provides some more values to Monacoin chain as a store of value (SoV).
 
 ## Specification ##
 
@@ -29,16 +29,16 @@ CREATE TABLE blobstores (
     block_index INTEGER,
     tx_index INTEGER,
     tx_hash STRING,
-    blob BLOB
+    binary BLOB
 -- TODO: TBD more fielids
 )
 ```
 
-The new `get_blobstore` is added as a `get_{table}` style counterparty API.
-blob is converted to hexified string and set on `blob_hex`.
+The new `get_binstore` is added as a `get_{table}` style counterparty API.
+blob is converted to hexified string and set on `binary_hex`.
 
-The new `create_blobstore` is added to the counterparty API.
-The argument for BLOB should be a hexified string and set as `blob_hex`.
+The new `create_binstore` is added to the counterparty API.
+The argument for the `binary` field should be a hexified string and set as `binry_hex`.
 
 valid messages are required an anti-spam fee as they use the DB storage.
 
@@ -53,11 +53,15 @@ fee won't consumed if the message status is `invalid`.
 
 ## Rationale ##
 
-New APIs don't provide UTF-8 conversion as they are for BLOB.
+New APIs don't provide UTF-8 conversion as they are for binaries.
 
-We are not care about huge BLOBs.
-The cracker will be billed many MONA as the miner fee for Such BLOBs.
+We are not care about huge binaries.
+The cracker will be billed many MONA as the miner fee for Such binaries.
 So there is no worry even if the fee rate is linear.
+
+At the first plan, we call this function `blobstore`.
+But we renamed to `binstore` as it might support a large object operation API in the future.
+
 
 ## Backward Compatibility ##
 
