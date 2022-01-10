@@ -95,8 +95,8 @@ CREATE TABLE IF NOT EXISTS triggers(
 It is added some indexes.
 
 ```
-CREATE INDEX IF NOT EXISTS block_index_idx ON broadcasts (block_index)
-CREATE INDEX IF NOT EXISTS source_index_idx ON broadcasts (status, source, tx_index)
+CREATE INDEX IF NOT EXISTS block_index_idx ON triggers (block_index)
+CREATE INDEX IF NOT EXISTS source_index_idx ON triggers (status, source, tx_index)
 ```
 
 # Compatibility
