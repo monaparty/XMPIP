@@ -16,7 +16,7 @@ This article defines the new message 'blobstore'.
 ## Motivation ##
 
 An upcoming feature "Monaparty Automation" requires a storage for messages and scripts.
-Such stores are enough if they provide BLOB. Each contents will be parsed in code.
+A simple BLOB is enough ro such requirements.
 
 In addition , the pure BLOB storage provides to Monacoin chain as a store of value (SoV).
 
@@ -55,6 +55,9 @@ fee won't consumed if the message status is `invalid`.
 
 New APIs don't provide UTF-8 conversion as they are for BLOB.
 
+We are not care about huge BLOBs.
+The cracker will be required many MONA as the miner fee for Such BLOBs.
+So there is no worry even if the fee rate is linear.
 
 ## Backward Compatibility ##
 
