@@ -18,7 +18,7 @@ This article defines the new message 'blobstore'.
 An upcoming feature "Monaparty Automation" requires a storage for messages and scripts.
 A simple BLOB is enough ro such requirements.
 
-In addition , the pure BLOB storage provides to Monacoin chain as a store of value (SoV).
+In addition , the pure BLOB storage provides some more values to Monacoin chain as a store of value (SoV).
 
 ## Specification ##
 
