@@ -56,7 +56,7 @@ fee won't consumed if the message status is `invalid`.
 New APIs don't provide UTF-8 conversion as they are for BLOB.
 
 We are not care about huge BLOBs.
-The cracker will be required many MONA as the miner fee for Such BLOBs.
+The cracker will be billed many MONA as the miner fee for Such BLOBs.
 So there is no worry even if the fee rate is linear.
 
 ## Backward Compatibility ##
